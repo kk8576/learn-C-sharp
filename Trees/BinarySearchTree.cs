@@ -6,6 +6,7 @@ namespace Trees
     public class BinarySearchTree<T> where T : IComparable<T>
     {
         private int _count;
+        private BinaryTreeNode<T> _root;
 
         public BinarySearchTree()
         {
@@ -15,14 +16,14 @@ namespace Trees
 
         public BinarySearchTree(BinaryTreeNode<T> root)
         {
-            Root = root;
+            _root = root;
             _count = 0;
         }
 
         public BinaryTreeNode<T> Root
         {
-            get;
-            internal set;
+            get {return _root;}
+            internal set {_root = value;}
         }
 
         public int Count
@@ -113,7 +114,9 @@ namespace Trees
         private bool _insertNode(BinaryTreeNode<T> currentNode, BinaryTreeNode<T> newNode)
         {
             if (currentNode == null)
+            {
                 return false;
+            }
 
             if (currentNode.HasLeftChild && currentNode > newNode)
             {
@@ -333,6 +336,15 @@ namespace Trees
         public bool Insert(T dataItem)
         {
             BinaryTreeNode<T> newNode = new BinaryTreeNode<T>(dataItem);
+
+            if (Root == null)
+            {
+                Root = newNode;
+                _count++;
+
+                return true;
+            }
+
             return _insertNode(Root, newNode);
         }
 
