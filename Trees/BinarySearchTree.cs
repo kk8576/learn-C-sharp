@@ -54,7 +54,7 @@ namespace Trees
             }
         }
 
-        private BinaryTreeNode<T> _findNextLargerNode(BinaryTreeNode<T> node)
+        protected BinaryTreeNode<T> _findNextLargerNode(BinaryTreeNode<T> node)
         {
             if (node == null)
                 return null;
@@ -85,7 +85,7 @@ namespace Trees
             return null;
         }
 
-        private BinaryTreeNode<T> _findNextSmallerNode(BinaryTreeNode<T> node)
+        protected BinaryTreeNode<T> _findNextSmallerNode(BinaryTreeNode<T> node)
         {
             if (node == null)
                 return null;
@@ -111,7 +111,7 @@ namespace Trees
             return null;
         }
 
-        private bool _insertNode(BinaryTreeNode<T> currentNode, BinaryTreeNode<T> newNode)
+        protected bool _insertNode(BinaryTreeNode<T> currentNode, BinaryTreeNode<T> newNode)
         {
             if (currentNode == null)
             {
@@ -146,7 +146,7 @@ namespace Trees
             return true;
         }
 
-        private bool _removeNode(BinaryTreeNode<T> node)
+        protected bool _removeNode(BinaryTreeNode<T> node)
         {
             if (node == null)
                 return false;
@@ -177,7 +177,7 @@ namespace Trees
             return true;
         }
 
-        private BinaryTreeNode<T> _findNode(BinaryTreeNode<T> currentNode, T itemData)
+        protected BinaryTreeNode<T> _findNode(BinaryTreeNode<T> currentNode, T itemData)
         {
             if (currentNode == null)
                 return null;
@@ -204,7 +204,7 @@ namespace Trees
             return null;
         }
 
-        private int _treeHeight(BinaryTreeNode<T> currentNode)
+        protected int _treeHeight(BinaryTreeNode<T> currentNode)
         {
             if (currentNode == null)
                 return 0;
@@ -225,7 +225,7 @@ namespace Trees
             return 0;
         }
 
-        private BinaryTreeNode<T> _findNodeMin(BinaryTreeNode<T> currentNode)
+        protected BinaryTreeNode<T> _findNodeMin(BinaryTreeNode<T> currentNode)
         {
             if (currentNode == null)
                 return null;
@@ -240,7 +240,7 @@ namespace Trees
             }
         }
 
-        private BinaryTreeNode<T> _findNodeMax(BinaryTreeNode<T> currentNode)
+        protected BinaryTreeNode<T> _findNodeMax(BinaryTreeNode<T> currentNode)
         {
             if (currentNode == null)
                 return null;
@@ -333,7 +333,7 @@ namespace Trees
             _count = 0;
         }
 
-        public bool Insert(T dataItem)
+        public virtual bool Insert(T dataItem)
         {
             BinaryTreeNode<T> newNode = new BinaryTreeNode<T>(dataItem);
 
@@ -348,7 +348,7 @@ namespace Trees
             return _insertNode(Root, newNode);
         }
 
-        public bool Insert(T[] dataItems)
+        public virtual bool Insert(T[] dataItems)
         {
             bool status = true;
 
@@ -362,7 +362,7 @@ namespace Trees
             return status;
         }
 
-        public bool Insert(List<T> dataItems)
+        public virtual bool Insert(List<T> dataItems)
         {
             bool status = true;
 
@@ -376,13 +376,13 @@ namespace Trees
             return status;
         }
 
-        public bool Remove(T dataItem)
+        public virtual bool Remove(T dataItem)
         {
             BinaryTreeNode<T> deleteNode = _findNode(Root, dataItem);
             return _removeNode(deleteNode);
         }
 
-        public bool Remove(T[] dataItems)
+        public virtual bool Remove(T[] dataItems)
         {
             bool status = true;
             
@@ -396,7 +396,7 @@ namespace Trees
             return status;
         }
 
-        public bool Remove(List<T> dataItems)
+        public virtual bool Remove(List<T> dataItems)
         {
             bool status = true;
 
@@ -457,7 +457,7 @@ namespace Trees
             return (_findNode(Root, item) != null);
         }
 
-        public BinaryTreeNode<T> FindNode(T item)
+        public virtual BinaryTreeNode<T> FindNode(T item)
         {
             return _findNode(Root, item);
         }
@@ -465,7 +465,7 @@ namespace Trees
         /// <summary>
         /// Removes the min value from tree.
         /// </summary>
-        public void RemoveMin()
+        public virtual void RemoveMin()
         {
             if (IsEmpty)
                 throw new Exception("Tree is empty.");
@@ -477,7 +477,7 @@ namespace Trees
         /// <summary>
         /// Removes the max value from tree.
         /// </summary>
-        public void RemoveMax()
+        public virtual void RemoveMax()
         {
             if (IsEmpty)
                 throw new Exception("Tree is empty.");

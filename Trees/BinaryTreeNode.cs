@@ -30,19 +30,19 @@ namespace Trees
             set {_data = value;}
         }
 
-        public BinaryTreeNode<T> Parent
+        public virtual BinaryTreeNode<T> Parent
         {
             get {return _parent;}
             set {_parent = value;}
         }
 
-        public BinaryTreeNode<T> LeftChild
+        public virtual BinaryTreeNode<T> LeftChild
         {
             get {return _leftChild;}
             set {_leftChild = value;}
         }
 
-        public BinaryTreeNode<T> RightChild
+        public virtual BinaryTreeNode<T> RightChild
         {
             get {return _rightChild;}
             set {_rightChild = value;}
@@ -110,7 +110,7 @@ namespace Trees
             return Value.CompareTo(other.Value);
         }
 
-            // Define the is greater than operator.
+        // Define the is greater than operator.
         public static bool operator >  (BinaryTreeNode<T> operand1, BinaryTreeNode<T> operand2)
         {
             return operand1.CompareTo(operand2) == 1;
